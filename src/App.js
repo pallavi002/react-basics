@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
-import './App.css';
+import styles from './App.css';
 import Person from './Person/Person';
+import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
 
 
 class App extends Component {
   state = {
     persons: [
       { id: "key01", name: "Pallavi", age: "19" },
-      { id: "key02", name: "Sumer"  , age: "27" },
-      { id: "key03", name: "palmer" , age: "5"  }
+      { id: "key02", name: "Sumer", age: "27" },
+      { id: "key03", name: "palmer", age: "5" }
     ],
     showPersons: false
   }
@@ -64,24 +65,25 @@ class App extends Component {
       persons = (
         <div>
           {this.state.persons.map((person, index) => {
-            return <Person click={() => this.deletePersonHandler(index)} name={person.name} age={person.age} key={person.id} 
-            changed={(event) => this.nameChanged(event, person.id)}/>
+            return <ErrorBoundary key={person.id}>
+              <Person click={() => this.deletePersonHandler(index)} name={person.name} age={person.age} changed={(event) => this.nameChanged(event, person.id)} />
+            </ErrorBoundary>
           })}
         </div>
       )
       style.backgroundColor = "red";
     }
     let classes = [];
-    if(this.state.persons.length <= 2) {
-      classes.push('red');
+    if (this.state.persons.length <= 2) {
+      classes.push(styles.red);
     }
-    if(this.state.persons.length <= 1) {
-      classes.push('bold');
+    if (this.state.persons.length <= 1) {
+      classes.push(styles.bold);
     }
     return (
-      <div className="App">
+      <div className={styles.App}>
         <h1>Hey, This is my React App Demo.</h1>
-        <p className={ classes.join(" ") }>This is really workingg, hurray..!!!</p>
+        <p className={classes.join(" ")}>This is really workingg, hurray..!!!</p>
         <button onClick={this.togglePersonsHandler} style={style}>SHOW PERSONS</button>
         {/* { this.state.showPersons ? */}
         {persons}

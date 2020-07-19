@@ -1,5 +1,5 @@
 import React from 'react';
-import './Person.css';
+import styling from './Person.css';
 
 // class Person extends Component {
 //   render() {
@@ -13,8 +13,8 @@ import './Person.css';
 
 const Person = (props) => {
   return (
-    <div className="Person">
-      <h2 onClick= {props.click}>This is person Component and I am {props.name} {props.lastname} and I am {props.age} years old.</h2>
+    <div className={styling.Person}>
+      <h2 onClick= {props.click} className={styling.trying}>This is person Component and I am {props.name} {props.lastname} and I am {props.age} years old.</h2>
       <b><p onClick= {props.click}>{props.children}</p></b>
       <input type="text" onChange= {props.changed} value={props.name}/>
     </div>
