@@ -55,8 +55,8 @@ class App extends Component {
       backgroundColor: "green",
       color: "white",
       font: "inherit",
-      border: "1px solid blue",
-      padding: "8px",
+      border: "1.5px solid blue",
+      padding: "10px",
       cursor: "pointer",
       marginBottom: "1%"
     }
